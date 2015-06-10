@@ -16,7 +16,7 @@ yspace <- 0.05;
 
 
 
-jpeg(filename = output_fig, width = (sampleNum * (1 + xspace) - xspace) * 40, height = (geneNum * (1 + yspace) - yspace) * 40, quality = 100);
+jpeg(filename = output_fig, width = (sampleNum * (1 + xspace) - xspace) * 40 + 240, height = (geneNum * (1 + yspace) - yspace) * 40 + 240, quality = 100);
 
 plot.new()
 par(mar=c(0.1, 6.1, 6.1, 0.1))
@@ -30,11 +30,11 @@ for (i in 1:sampleNum) {
 }
 
 for (i in 1:sampleNum) {
- 	mtext(samples[i], side=3, line= -1.5, at=(i - 1)*(1+ xspace) + 0.5, las=2, adj = 0, cex = 1.8)
+ 	mtext(samples[i], side=3, line= -1, at=(i - 1)*(1+ xspace) + 0.5, las=2, adj = 0, cex = 1.5)
 }
 
 for (i in 1:geneNum) {
-	mtext(genes[i], side=2, line= -1.5, at=(i - 1) * (1 + yspace) + 0.5, las=1, adj = 1, cex = 1.8)
+	mtext(genes[i], side=2, line= -1, at=(i - 1) * (1 + yspace) + 0.5, las=1, adj = 1, cex = 1.5)
 }
 
 
