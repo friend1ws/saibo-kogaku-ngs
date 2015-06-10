@@ -47,44 +47,50 @@ for (i in 1:nrow(result)) {
 		sind <- which(samples == result[i,2]);
 	
 		tcol <- "black";
-		ttype <- 0;
+        pflag <- 0
 		if (result[i,3] == "point mutation,indel") {
 			tcol <- "yellow";
+            pflag <- 1;
 		} 	
 		if (result[i,3] == "structural variation") {
 			tcol <- "purple";
-		} 	
-		if (result[i,3] == "splicing aberration") {
-			tcol <- "green";
-			ttype <- 1;
-		} 	
-		if (result[i,3] == "gene fusion") {
-			tcol <- "red";
-			ttype <- 1;
+            pflag <- 1;
 		} 	
 		if (result[i,3] == "HBV integration") {
 			tcol <- "cyan";
+            pflag <- 1;
 		} 	
-		if (result[i,3] == "HBV fusion") {
+
+        if (pflag == 1) {
+            tx <- c((sind - 1) * (1 + xspace), (sind - 1) * (1 + xspace) + 1, (sind - 1) * (1 + xspace) );
+            ty <- c((gind - 1) * (1 + yspace), (gind - 1) * (1 + yspace), (gind - 1) * (1 + yspace) + 1);
+            polygon( tx, ty,  col=tcol, border=F);
+        }
+
+
+        pflag <- 0;
+        if (result[i,4] == "splicing aberration") {
+            tcol <- "green";
+            pflag <- 1;
+        }
+        if (result[i,4] == "gene fusion") {
+            tcol <- "red";
+            pflag <- 1;
+        }
+		if (result[i,4] == "HBV fusion") {
 			tcol <- "blue";
-			ttype <- 1;
+			pflag <- 1;
 		} 	
-		if (result[i,3] == "over expression") {
+		if (result[i,4] == "over expression") {
 			tcol <- "chocolate";
-			ttype <- 1;
+			pflag <- 1;
 		} 
 
-
-		if (ttype == 0) {
-			tx <- c((sind - 1) * (1 + xspace), (sind - 1) * (1 + xspace) + 1, (sind - 1) * (1 + xspace) );
-			ty <- c((gind - 1) * (1 + yspace), (gind - 1) * (1 + yspace), (gind - 1) * (1 + yspace) + 1);
-		}
-		if (ttype == 1) {
+		if (pflag == 1) {
 			tx <- c((sind - 1) * (1 + xspace), (sind - 1) * (1 + xspace) + 1, (sind - 1) * (1 + xspace) + 1 );
 			ty <- c((gind - 1) * (1 + yspace) + 1, (gind - 1) * (1 + yspace) + 1, (gind - 1) * (1 + yspace));
-		}
-
-		polygon( tx, ty,  col=tcol, border=F);
+		    polygon( tx, ty,  col=tcol, border=F);
+        }
 
 	}
 }
