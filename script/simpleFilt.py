@@ -1,11 +1,11 @@
 #! /usr/local/bin/python
 
-import sys
+import sys, gzip
 
 inputFile = sys.argv[1]
 thres = sys.argv[2]
 
-hIN = open(inputFile, 'r')
+hIN = gzip.open(inputFile, 'r')
 
 for line in hIN:
     F = line.rstrip('\n').split('\t')
