@@ -44,6 +44,9 @@ for line in hIN:
     splicingMotifRegions = []
     targetGene  =[]
 
+    if F[1] == "42689068":
+        pass
+
     # we need to detect the non exon-intron junction break points
     # current procedure may be not perfect and be subject to change..
     gene1 = F[4].split(';')
