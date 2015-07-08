@@ -4,7 +4,7 @@
 # make directories for the results
 if [ -d ../result ];
 then
-    mkdir -p ./result
+    mkdir -p ../result
 fi
 
 
